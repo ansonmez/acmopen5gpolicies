@@ -1,5 +1,4 @@
 resources:
-- networkattachmentdefinition.yaml
 - open5gs-namespace-policy.yaml
 - open5gsupf-namespace-policy.yaml
 - enablesctp.yaml
