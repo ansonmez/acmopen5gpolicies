@@ -1,0 +1,52 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: enablesctp
+  namespace: open5gs
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
+spec:
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: enablesctp
+        spec:
+          namespaceSelector:
+            exclude:
+              - kube-*
+            include:
+              - default
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: machineconfiguration.openshift.io/v1
+                kind: MachineConfig
+                metadata:
+                  labels:
+                    machineconfiguration.openshift.io/role: worker
+                  name: load-sctp-module
+                  namespace: open5gs
+                spec:
+                  config:
+                    ignition:
+                      version: 3.1.0
+                    storage:
+                      files:
+                        - contents:
+                            source: data:,
+                          mode: 420
+                          overwrite: true
+                          path: /etc/modprobe.d/sctp-blacklist.conf
+                        - contents:
+                            source: data:text/plain;charset=utf-8,sctp
+                          mode: 420
+                          overwrite: true
+                          path: /etc/modules-load.d/sctp-load.conf
+          remediationAction: enforce
+          severity: low
+  remediationAction: enforce

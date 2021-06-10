@@ -1,0 +1,13 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: 5gplacements
+  namespace: open5gs
+placementRef:
+  name: 5gplacements
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: enablesctp
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io

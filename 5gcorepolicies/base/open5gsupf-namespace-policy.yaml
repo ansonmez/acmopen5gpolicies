@@ -1,0 +1,31 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: open5gsupf-namespace
+  namespace: default
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-namespace-open5gsupf
+      spec:
+        remediationAction: enforce # will be overridden by remediationAction in parent policy
+        severity: low
+        namespaceSelector:
+          exclude: ["kube-*"]
+          include: ["default"]
+        object-templates:
+          - complianceType: musthave
+            objectDefinition:
+              kind: Namespace # must have namespace 'prod'
+              apiVersion: v1
+              metadata:
+                name: open5gsupf

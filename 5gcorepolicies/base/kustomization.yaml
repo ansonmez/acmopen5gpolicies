@@ -1,3 +1,12 @@
 resources:
 - networkattachmentdefinition.yaml
 - open5gspolicies.yaml
+- open5gs-namespace-policy.yaml
+- open5gsupf-namespace-policy.yaml
+- enablesctp.yaml
+- open5gs-networkattachmentdefinition.yaml
+- 5gplacements.yaml
+- 5gplacements-open5gs.yaml
+- 5gplacements-open5gsupf.yaml
+- 5gplacements-open5gs-networkattachmentdefinition.yaml
+- 5gplacements-placementule.yaml
