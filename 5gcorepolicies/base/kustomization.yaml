@@ -1,0 +1,3 @@
+resources:
+- networkattachmentdefinition.yaml
+- open5gspolicies.yaml
