@@ -1,0 +1,13 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: open5gs-networkattachmentdefinition
+spec:
+  policy-templates:
+  - objectDefinition:
+      spec:
+        object-templates:
+          - complianceType: musthave
+            objectDefinition:
+              spec:
+                config: '{ "cniVersion": "0.3.1", "name": "testuplane", "type": "ipvlan", "master": "ens22", "mode": "l2", "ipam": {"type": "static","addresses": [{"address": "192.168.50.200/24"}] } }'

@@ -1,0 +1,220 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: open5gs-namespace
+  namespace: default
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-namespace-open5gs
+      spec:
+        remediationAction: enforce # will be overridden by remediationAction in parent policy
+        severity: low
+        namespaceSelector:
+          exclude: ["kube-*"]
+          include: ["default"]
+        object-templates:
+          - complianceType: musthave
+            objectDefinition:
+              kind: Namespace # must have namespace 'prod'
+              apiVersion: v1
+              metadata:
+                name: open5gs
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: open5gsupf-namespace
+  namespace: default
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-namespace-open5gsupf
+      spec:
+        remediationAction: enforce # will be overridden by remediationAction in parent policy
+        severity: low
+        namespaceSelector:
+          exclude: ["kube-*"]
+          include: ["default"]
+        object-templates:
+          - complianceType: musthave
+            objectDefinition:
+              kind: Namespace # must have namespace 'prod'
+              apiVersion: v1
+              metadata:
+                name: open5gsupf
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: enablesctp
+  namespace: open5gs
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
+spec:
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: enablesctp
+        spec:
+          namespaceSelector:
+            exclude:
+              - kube-*
+            include:
+              - default
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: machineconfiguration.openshift.io/v1
+                kind: MachineConfig
+                metadata:
+                  labels:
+                    machineconfiguration.openshift.io/role: worker
+                  name: load-sctp-module
+                  namespace: open5gs
+                spec:
+                  config:
+                    ignition:
+                      version: 3.1.0
+                    storage:
+                      files:
+                        - contents:
+                            source: data:,
+                          mode: 420
+                          overwrite: true
+                          path: /etc/modprobe.d/sctp-blacklist.conf
+                        - contents:
+                            source: data:text/plain;charset=utf-8,sctp
+                          mode: 420
+                          overwrite: true
+                          path: /etc/modules-load.d/sctp-load.conf
+          remediationAction: enforce
+          severity: low
+  remediationAction: enforce
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: open5gs-networkattachmentdefinition
+  namespace: default
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: open5gs-networkattachmentdefinition
+      spec:
+        remediationAction: enforce # will be overridden by remediationAction in parent policy
+        severity: low
+        namespaceSelector:
+          exclude: ["kube-*"]
+          include: ["default"]
+        object-templates:
+          - complianceType: musthave
+            objectDefinition:
+              apiVersion: k8s.cni.cncf.io/v1
+              kind: networkattachmentdefinition
+              metadata:
+                name: userplaneupfips
+                namespace: open5gs
+              spec:
+                config: '{ "cniVersion": "0.3.1", "name": "testuplane", "type": "ipvlan", "master": "ens22", "mode": "l2", "ipam": {"type": "static","addresses": [{"address": "192.168.50.200/24"}] } }'
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: 5gplacements
+  namespace: open5gs
+placementRef:
+  name: 5gplacements
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: enablesctp
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: 5gplacements-open5gs
+  namespace: default
+placementRef:
+  name: 5gplacements
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: open5gs-namespace
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: 5gplacements-open5gsupf
+  namespace: default
+placementRef:
+  name: 5gplacements
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: open5gsupf-namespace
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: 5gplacements-open5gs-networkattachmentdefinition
+  namespace: default
+placementRef:
+  name: 5gplacements
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: open5gs-networkattachmentdefinition 
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: 5gplacements
+  namespace: default
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: cluster, operator: In, values: ["5g"]}
