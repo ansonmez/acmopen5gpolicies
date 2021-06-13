@@ -7,3 +7,4 @@ resources:
 - 5gplacements-open5gsupf.yaml
 - 5gplacements-open5gs-nad.yaml
 - 5gplacements-placementule.yaml
+- networkattachmentdefinition.yaml
