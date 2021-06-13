@@ -25,8 +25,8 @@ spec:
         object-templates:
           - complianceType: musthave
             objectDefinition:
-              kind: network-attachment-definitions
-              apiVersion: k8s.cni.cncf.io/v1
+              kind: NetworkAttachmentDefinition
+              apiVersion: k8s.cni.cncf.io
               metadata:
                 name: userplaneupfips
                 namespace: open5gs
