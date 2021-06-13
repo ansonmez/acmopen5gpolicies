@@ -26,7 +26,7 @@ spec:
           - complianceType: musthave
             objectDefinition:
               kind: NetworkAttachmentDefinition
-              apiVersion: k8s.cni.cncf.io
+              apiVersion: k8s.cni.cncf.io/v1
               metadata:
                 name: userplaneupfips
                 namespace: open5gs
