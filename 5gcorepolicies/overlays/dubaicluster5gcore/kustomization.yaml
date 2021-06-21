@@ -2,3 +2,5 @@ bases:
 - ../../base
 patchesStrategicMerge:
 - networkattachmentdefinition.yaml
+- 5gplacements-placementule-nad.yaml
+- 5gplacements-open5gs-nad.yaml
