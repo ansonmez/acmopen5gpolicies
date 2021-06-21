@@ -4,7 +4,7 @@ metadata:
   name: 5gplacements-open5gs-networkattachmentdefinition
   namespace: default
 placementRef:
-  name: 5gplacements-nad-istanbul
+  name: 5gplacements-nad
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:

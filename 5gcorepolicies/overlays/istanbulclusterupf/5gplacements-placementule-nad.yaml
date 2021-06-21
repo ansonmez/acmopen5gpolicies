@@ -1,7 +1,7 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: 5gplacements-nad-istanbul
+  name: 5gplacements-nad
   namespace: default
 spec:
   clusterConditions:
