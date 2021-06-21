@@ -9,3 +9,4 @@ resources:
 - enablesctp.yaml
 - networkattachmentdefinition.yaml
 - 5gplacements-placementule-nad.yaml
+- deneme.yaml
