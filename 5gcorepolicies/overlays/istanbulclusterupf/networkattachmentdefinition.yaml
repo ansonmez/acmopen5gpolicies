@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: open5gs-networkattachmentdefinition
+  name: open5gs-networkattachmentdefinition-upf
 spec:
   policy-templates:
   - objectDefinition:
