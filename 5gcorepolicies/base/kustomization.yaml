@@ -8,3 +8,4 @@ resources:
 - 5gplacements-open5gs-nad.yaml
 - 5gplacements-placementule.yaml
 - networkattachmentdefinition.yaml
+- 5gplacements-open5gs-nad.yaml
