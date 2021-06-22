@@ -1,8 +1,8 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: open5gs-networkattachmentdefinition
-  namespace: default
+  name: open5gs-nad-5gcore
+  namespace: open5gs
   annotations:
     policy.open-cluster-management.io/standards: 5G Openshift Standarts
     policy.open-cluster-management.io/categories: 5G Configuration Management

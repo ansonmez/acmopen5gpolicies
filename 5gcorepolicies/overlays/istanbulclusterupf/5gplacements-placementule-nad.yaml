@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: 5gplacements-nad-istanbulclusterupf
-  namespace: default
+  namespace: open5gsupf
 spec:
   clusterConditions:
   - status: "True"

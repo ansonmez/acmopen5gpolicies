@@ -1,8 +1,15 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: open5gs-networkattachmentdefinition-upf
+  name: open5gs-nad-istanbulclusterupf
+  namespace: open5gsupf
+  annotations:
+    policy.open-cluster-management.io/standards: 5G Openshift Standarts
+    policy.open-cluster-management.io/categories: 5G Configuration Management
+    policy.open-cluster-management.io/controls: 5G Baseline Configuration
 spec:
+  remediationAction: inform
+  disabled: false
   policy-templates:
   - objectDefinition:
       spec:

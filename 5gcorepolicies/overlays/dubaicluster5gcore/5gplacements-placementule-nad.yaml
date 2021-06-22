@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: 5gplacements-nad
-  namespace: default
+  namespace: open5gs
 spec:
   clusterConditions:
   - status: "True"

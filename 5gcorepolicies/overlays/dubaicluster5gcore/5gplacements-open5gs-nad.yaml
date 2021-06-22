@@ -2,12 +2,12 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: 5gplacements-open5gs-networkattachmentdefinition
-  namespace: default
+  namespace: open5gs
 placementRef:
   name: 5gplacements-nad
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: open5gs-networkattachmentdefinition
+- name: open5gs-nad-5gcore
   kind: Policy
   apiGroup: policy.open-cluster-management.io
