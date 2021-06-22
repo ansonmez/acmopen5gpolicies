@@ -5,7 +5,3 @@ resources:
 - 5gplacements-placementule-nad.yaml
 - networkattachmentdefinition.yaml
 
-patchesStrategicMerge:
-- networkattachmentdefinition.yaml
-- 5gplacements-placementule-nad.yaml
-- 5gplacements-open5gs-nad.yaml
