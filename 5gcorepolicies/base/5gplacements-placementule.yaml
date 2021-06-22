@@ -9,4 +9,4 @@ spec:
     type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - {key: cluster, operator: In, values: ["5g"]}
+      - {key: defaultpolicy, operator: In, values: ["yes"]}
