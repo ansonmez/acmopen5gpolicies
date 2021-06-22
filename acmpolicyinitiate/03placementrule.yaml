@@ -1,0 +1,11 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: 5gcorepolicy
+  namespace: default
+  labels:
+    name: open5gs
+spec:
+  clusterSelector:
+    matchLabels:
+      gitops5gpolicy: enable

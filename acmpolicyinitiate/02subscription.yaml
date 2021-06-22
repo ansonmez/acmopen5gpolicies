@@ -1,0 +1,16 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: stable-policies-sub-open5gs
+  namespace: default
+  labels:
+    name: open5gs
+  annotations:
+    apps.open-cluster-management.io/git-branch: main
+    apps.open-cluster-management.io/git-path: 5gcorepolicies/overlays
+spec:
+  channel: default/stable-policies-chan-open5gs
+  placement: 
+    placementRef: 
+      kind: PlacementRule
+      name: 5gcorepolicy

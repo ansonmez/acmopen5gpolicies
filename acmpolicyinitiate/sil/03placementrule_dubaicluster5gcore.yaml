@@ -1,0 +1,11 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: dubaicluster5gcore 
+  namespace: default
+  labels:
+    name: open5gs
+spec:
+  clusterSelector:
+    matchLabels:
+      clusterid: dubaicluster5gcore

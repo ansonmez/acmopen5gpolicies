@@ -1,0 +1,8 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: stable-policies-chan-open5gs
+  namespace: default
+spec:
+  type: GitHub
+  pathname: https://github.com/ansonmez/acmopen5gpolicies.git
