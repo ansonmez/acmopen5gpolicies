@@ -1,13 +1,13 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: 5gplacements-open5gs-networkattachmentdefinition
+  name: 5gplacements-open5gs-networkattachmentdefinition-istanbulclusterupf
   namespace: default
 placementRef:
-  name: 5gplacements-nad
+  name: 5gplacements-nad-istanbulclusterupf
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: open5gs-networkattachmentdefinition
+- name: open5gs-networkattachmentdefinition-upf
   kind: Policy
   apiGroup: policy.open-cluster-management.io
