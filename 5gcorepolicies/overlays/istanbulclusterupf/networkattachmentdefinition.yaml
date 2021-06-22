@@ -8,7 +8,7 @@ metadata:
     policy.open-cluster-management.io/categories: 5G Configuration Management
     policy.open-cluster-management.io/controls: 5G Baseline Configuration
 spec:
-  remediationAction: inform
+  remediationAction: enforce
   disabled: false
   policy-templates:
   - objectDefinition:
