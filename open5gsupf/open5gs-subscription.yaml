@@ -1,0 +1,24 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  labels:
+    app: open5gsupf
+  name: open5gsupf-subscription
+  namespace: open5gsupf
+spec:
+  channel: open5gsupf/open5gsupfchannel
+  name: helm-chart-upf
+  packageOverrides:
+  - packageAlias: helm-chart-upf
+    packageName: helm-chart-upf
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: open5gsupf-placement
+  packageOverrides:
+  - packageName: helm-chart-upf
+    packageOverrides:
+    - path: spec
+      value:
+        dnn: arvr
+        advertise: 192.168.50.201
