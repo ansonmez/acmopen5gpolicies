@@ -1,0 +1,9 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: open5gsupf-placement
+  namespace: open5gsupf
+spec:
+  clusterSelector:
+    matchLabels:
+      5g: upf

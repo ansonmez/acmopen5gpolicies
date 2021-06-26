@@ -1,0 +1,24 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  labels:
+    app: open5gs
+  name: open5gs-subscription
+  namespace: open5gs
+spec:
+  channel: open5gs/open5gschannel
+  name: open5gs-5gcore-helm
+  packageOverrides:
+  - packageAlias: open5gs-5gcore-helm
+    packageName: open5gs-5gcore-helm
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: open5gs-placement
+  packageOverrides:
+  - packageName: open5gs-5gcore-helm
+    packageOverrides:
+    - path: spec
+      value:
+        dnn: internet
+        advertise: 192.168.51.200

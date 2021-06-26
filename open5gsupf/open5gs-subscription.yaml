@@ -20,5 +20,6 @@ spec:
     packageOverrides:
     - path: spec
       value:
-        dnn: arvr
-        advertise: 192.168.50.201
+        dnn2: arvr
+        upfmec:
+          advertise: 192.168.50.201

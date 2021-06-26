@@ -1,0 +1,8 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: open5gsupfchannel
+  namespace: open5gsupf
+spec:
+  pathname: https://raw.githubusercontent.com/ansonmez/acmopen5gsupf/main
+  type: HelmRepo

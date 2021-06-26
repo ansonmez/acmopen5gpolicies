@@ -1,0 +1,9 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: open5gs-placement
+  namespace: open5gs
+spec:
+  clusterSelector:
+    matchLabels:
+      5g: corenetwork
