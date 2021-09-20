@@ -4,5 +4,5 @@ metadata:
   name: open5gsupfchannel
   namespace: open5gsupf
 spec:
-  pathname: https://raw.githubusercontent.com/ansonmez/acmopen5gsupf/main
+  pathname: https://raw.githubusercontent.com/ansonmez/acmopen5gsupf/rhpds
   type: HelmRepo
