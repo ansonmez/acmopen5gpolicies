@@ -1,0 +1,12 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: 5gplacements-nad-abudhabiclusterupf
+  namespace: open5gsupf
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: clusterid, operator: In, values: ["abudhabiclusterupf"]}

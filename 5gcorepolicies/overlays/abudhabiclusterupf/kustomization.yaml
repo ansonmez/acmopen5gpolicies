@@ -1,0 +1,7 @@
+bases:
+- ../../base
+
+resources:
+- 5gplacements-open5gs-nad.yaml
+- 5gplacements-placementule-nad.yaml
+- networkattachmentdefinition.yaml
