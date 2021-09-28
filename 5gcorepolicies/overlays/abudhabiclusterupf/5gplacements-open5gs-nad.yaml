@@ -1,0 +1,13 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: 5gplacements-nad-abudhabiclusterupf
+  namespace: open5gsupf
+placementRef:
+  name: 5gplacements-nad-abudhabiclusterupf
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: open5gs-nad-abudhabiclusterupf
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
