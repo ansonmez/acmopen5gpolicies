@@ -22,4 +22,4 @@ spec:
       value:
         dnn2: arvr
         upfmec:
-          advertise: 192.168.50.201
+          advertise: 10.0.159.112

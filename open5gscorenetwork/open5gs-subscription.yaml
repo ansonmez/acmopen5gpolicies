@@ -21,4 +21,4 @@ spec:
     - path: spec
       value:
         dnn: internet
-        advertise: 192.168.51.200
+        advertise: 10.0.151.162

@@ -6,7 +6,7 @@ metadata:
   labels:
     name: open5gs
   annotations:
-    apps.open-cluster-management.io/git-branch: main
+    apps.open-cluster-management.io/git-branch: rhpds
     apps.open-cluster-management.io/git-path: 5gcorepolicies/overlays
 spec:
   channel: default/stable-policies-chan-open5gs
