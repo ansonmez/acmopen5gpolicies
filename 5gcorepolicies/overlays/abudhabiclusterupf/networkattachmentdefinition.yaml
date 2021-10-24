@@ -31,4 +31,4 @@ spec:
                 name: testuserplane
                 namespace: open5gsupf
               spec:
-                config: '{ "cniVersion": "0.3.1", "name": "testuplane", "type": "ipvlan", "master": "ens6", "mode": "l2", "ipam": {"type": "static","addresses": [{"address": "10.0.214.170/19"}] } }'
+                config: '{ "cniVersion": "0.3.1", "name": "testuplane", "type": "ipvlan", "master": "ens6", "mode": "l2", "ipam": {"type": "static","addresses": [{"address": "10.0.144.133/19"}] } }'
